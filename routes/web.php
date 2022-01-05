@@ -24,8 +24,6 @@ Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
 	Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
 
-
-
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
@@ -35,5 +33,10 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('user.index');
 })->name('dashboard');
 
-Route::get('/user/logout', [MainUserContorller::class, 'Logout'] )->name('user.logout');
 Route::get('/admin/logout', [AdminController::class, 'destroy'] )->name('admin.logout');
+
+Route::get('/user/logout', [MainUserContorller::class, 'Logout'] )->name('user.logout');
+
+Route::get('/user/profile', [MainUserContorller::class, 'UserProfile'] )->name('user.profile');
+Route::get('/user/profile/edit', [MainUserContorller::class, 'UserProfileEdit'] )->name('profile.edit');
+Route::post('/user/profile/store', [MainUserContorller::class, 'UserProfileStore'] )->name('profile.store');
