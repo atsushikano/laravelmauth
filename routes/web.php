@@ -40,3 +40,6 @@ Route::get('/user/logout', [MainUserContorller::class, 'Logout'] )->name('user.l
 Route::get('/user/profile', [MainUserContorller::class, 'UserProfile'] )->name('user.profile');
 Route::get('/user/profile/edit', [MainUserContorller::class, 'UserProfileEdit'] )->name('profile.edit');
 Route::post('/user/profile/store', [MainUserContorller::class, 'UserProfileStore'] )->name('profile.store');
+
+Route::get('/user/password/view', [MainUserContorller::class, 'UserPasswordView'] )->name('user.password.edit');
+Route::post('/user/password/update', [MainUserContorller::class, 'UserPasswordUpdate'] )->name('user.password.update');
