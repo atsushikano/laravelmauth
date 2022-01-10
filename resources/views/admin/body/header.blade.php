@@ -8,13 +8,14 @@
           <nav class="nav">
             <div class="dropdown">
               <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                <span class="logged-name">Jane<span class="hidden-md-down"> Doe</span></span>
-                <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
+                <span class="logged-name">{{ $adminData->name }}<span class="hidden-md-down">{{ $adminData->email }}</span></span>
+                <img src="{{ (!empty($adminData->profile_photo_path))?
+                    url('upload/admin_images/'.$adminData->profile_photo_path):url('upload/no_image.jpg') }}" class="wd-32 rounded-circle" alt="">
               </a>
               <div class="dropdown-menu dropdown-menu-header wd-200">
                 <ul class="list-unstyled user-profile-nav">
-                  <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-                  <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
+                  <li><a href="{{ route('admin.profile') }}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                  <li><a href="{{ route('admin.password.edit') }}"><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
                   <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
                   <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
                   <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
